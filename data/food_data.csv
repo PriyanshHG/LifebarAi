@@ -1,10 +1,196 @@
 food_item,calories,life_minutes_impact
 burger,300,-30
-salad,150,+20
-pizza,400,-45
-rice,200,+10
+cheeseburger,350,-35
+hamburger,280,-28
+fries,365,-40
+pizza slice,285,-30
+chicken nuggets,320,-35
+hot dog,290,-32
+taco,180,-15
+burrito,450,-50
+pancake,120,-5
+waffle,160,-10
+bacon,50,-5
+eggs,70,0
+scrambled eggs,90,0
+omelette,120,-5
+toast,70,0
+bagel,250,-15
+cream cheese,50,-5
+peanut butter toast,200,-10
+avocado toast,220,+10
+cereal,120,-5
+oatmeal,150,+5
+yogurt,110,+5
+greek yogurt,100,+10
+milk,110,+5
+almond milk,40,+5
+orange juice,120,0
+apple juice,120,-5
 soda,150,-25
-fried chicken,450,-60
-noodles,250,-15
-juice,120,+10
-paneer,180,+15
+diet soda,5,-5
+coffee,0,+5
+tea,0,+5
+espresso,10,0
+latte,200,-10
+smoothie,250,-15
+energy drink,160,-20
+water,0,+10
+chicken breast,160,+10
+grilled chicken,180,+10
+fried chicken,300,-40
+roast beef,200,-15
+turkey sandwich,250,-10
+tuna sandwich,300,-20
+peanut butter jelly sandwich,320,-25
+ham sandwich,300,-25
+caesar salad,250,-15
+greek salad,200,+10
+coleslaw,150,-10
+macaroni salad,250,-20
+baked potato,130,+5
+mashed potatoes,150,-10
+sweet potato fries,160,-15
+rice,200,+10
+quinoa,150,+15
+pasta,200,-10
+spaghetti,220,-15
+lasagna,350,-30
+nachos,400,-45
+quesadilla,300,-30
+salsa,20,+5
+guacamole,100,+10
+sour cream,50,-5
+onion rings,350,-35
+mozzarella sticks,300,-30
+fish sticks,280,-30
+shrimp,100,+10
+salmon,200,+15
+tuna,120,+10
+crab cake,300,-25
+clam chowder,250,-20
+soup,100,+5
+ramen,380,-35
+pho,300,-15
+pad thai,350,-30
+curry,300,-20
+kebab,250,-20
+gyro,300,-30
+falafel,150,0
+hummus,100,+5
+pita bread,150,-5
+steak,300,-25
+ribs,400,-45
+brisket,350,-40
+barbecue chicken,300,-30
+meatloaf,250,-25
+ meatballs,200,-20
+bacon cheeseburger,400,-45
+chili,300,-20
+cornbread,200,-15
+biscuit,150,-10
+grits,120,+5
+hash browns,180,-20
+pancake syrup,100,-10
+donut,250,-30
+muffin,200,-15
+brownie,220,-25
+cookie,150,-20
+cupcake,250,-30
+ice cream,200,-25
+frozen yogurt,150,-15
+cake slice,300,-35
+pie slice,350,-40
+pudding,180,-15
+candy bar,250,-35
+gummy bears,150,-25
+popcorn,100,-5
+pretzels,110,-10
+potato chips,150,-20
+trail mix,200,-15
+granola bar,120,-15
+fruit roll-up,100,-10
+apple,90,+10
+banana,110,+5
+orange,80,+10
+grapefruit,50,+10
+strawberries,50,+10
+blueberries,80,+10
+raspberries,60,+10
+blackberries,60,+10
+kiwi,90,+10
+mango,100,+10
+pineapple,80,+10
+watermelon,50,+10
+grapes,90,+5
+pear,100,+10
+plum,70,+10
+peach,70,+10
+apricot,50,+10
+cherry,80,+10
+fig bar,100,-10
+dates,100,+5
+nuts,180,+10
+almonds,170,+10
+walnuts,180,+10
+cashews,160,+5
+peanuts,170,+5
+sunflower seeds,170,+5
+chia seeds,140,+10
+flaxseeds,130,+10
+protein bar,200,-10
+protein shake,150,0
+vegetable soup,80,+10
+broccoli,50,+10
+spinach,30,+10
+kale,40,+10
+carrots,50,+10
+celery,10,+10
+bell peppers,30,+10
+cucumber,20,+10
+zucchini,30,+10
+asparagus,40,+10
+green beans,40,+10
+cauliflower,30,+10
+onions,50,+5
+garlic,10,+10
+tomatoes,30,+10
+lettuce,10,+10
+cabbage,30,+10
+eggplant,30,+10
+mushrooms,20,+10
+corn,100,+5
+peas,80,+5
+lentils,120,+10
+kidney beans,110,+10
+black beans,110,+10
+chickpeas,120,+10
+tofu,120,+10
+tempeh,140,+10
+soy sauce,10,-10
+salsa,20,+10
+olive oil,120,+5
+butter,100,-10
+coconut oil,120,-5
+mayonnaise,100,-10
+mustard,5,0
+ketchup,20,-5
+bbq sauce,30,-10
+soy sauce,10,-10
+vinegar,5,+5
+lemon juice,10,+5
+hot sauce,5,+5
+jam,50,-10
+honey,60,-10
+maple syrup,50,-10
+sugar,50,-15
+artificial sweetener,0,-10
+whole wheat bread,150,0
+white bread,150,-10
+brown rice,200,+10
+white rice,200,-10
+quinoa,150,+10
+couscous,180,-5
+pasta,200,-10
+ramen noodles,180,-15
+ramen seasoning,100,-15
