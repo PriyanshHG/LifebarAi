@@ -1,20 +1,19 @@
 # LifeBar AI – MVP
 
-## 🎯 Objective:
-Photo upload karke pata karo us khane ki calories kitni hai aur ye aapki lifespan ko kitna ghata ta hai ya badhata hai.
+AI-powered food analyzer that estimates:
+- Food item (using AI)
+- Calories
+- Lifespan impact in minutes
 
 ## 🔧 Tech Stack:
 - Backend: Flask
 - Frontend: HTML/CSS/JS
-- Data: Manual CSV + Nutrition Research
+- AI: Clarifai API for food detection
+- Data Source: Manual CSV + WHO/USDA Research
 - Hosting: Rork.app
 
-## 📁 Folder Structure:
-Dekho upar 👆
+## 🚀 Run Locally
 
-## 🚀 Run Locally:
-1. Clone repo
-2. `cd backend`
-3. `pip install -r requirements.txt`
-4. `python app.py`
-5. Open frontend/index.html in browser
+1. Clone repo:
+   ```bash
+   git clone https://github.com/priyansh_dd/lifebar-ai.git 
