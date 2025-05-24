@@ -1,20 +1,156 @@
 <!DOCTYPE html>
-<html>
+<html lang="en">
 <head>
-  <title>LifeBar AI</title>
-  <link rel="stylesheet" href="style.css">
+  <meta charset="UTF-8" />
+  <title>🧠 LifeBarAI</title>
+  <style>
+    body {
+      font-family: 'Segoe UI', sans-serif;
+      background: #0d1117;
+      color: #c9d1d9;
+      text-align: center;
+      padding: 40px;
+    }
+    input, button {
+      padding: 12px 20px;
+      margin: 15px;
+      font-size: 16px;
+      border-radius: 6px;
+      border: none;
+      cursor: pointer;
+    }
+    button {
+      background-color: #238636;
+      color: white;
+    }
+    #result {
+      margin-top: 30px;
+      font-size: 1.3em;
+    }
+  </style>
 </head>
 <body>
-  <div class="container">
-    <h1>Upload Your Food</h1>
-    <form id="foodForm">
-      <input type="text" id="foodInput" placeholder="Enter food name (e.g., burger)" required />
-      <button type="submit">Analyze</button>
-    </form>
 
-    <div id="result"></div>
-  </div>
+  <h1>🧠 LifeBarAI</h1>
+  <p>Scan food. Know your life impact.</p>
 
-  <script src="script.js"></script>
+  <input type="file" id="imageInput" accept="image/*" />
+  <button onclick="analyzeImage()">🔍 Scan Food</button>
+
+  <div id="result"></div>
+
+  <script>
+    const USDA_API_KEY = "YOUR_USDA_API_KEY";
+    const CLARIFAI_API_KEY = "YOUR_CLARIFAI_API_KEY";
+
+    async function analyzeImage() {
+      const input = document.getElementById("imageInput");
+      const file = input.files[0];
+      if (!file) return alert("Please upload an image.");
+
+      // Convert to Base64
+      const reader = new FileReader();
+      reader.onload = async () => {
+        const base64Image = reader.result.split(',')[1];
+
+        // Step 1: Detect Food using Clarifai
+        const foodName = await detectFoodWithClarifai(base64Image);
+        if (!foodName) {
+          showResult("❌ Couldn't recognize the food.");
+          return;
+        }
+
+        // Step 2: Get Nutrition from USDA
+        const nutrition = await getNutritionFromUSDA(foodName);
+
+        // Step 3: Show Lifespan Impact
+        if (nutrition) {
+          const { lifespanImpact } = nutrition;
+
+          let message = "";
+          if (lifespanImpact >= 0) {
+            message = `✅ This food adds <strong>${lifespanImpact} minutes</strong> to your life.`;
+          } else {
+            message = `⚠️ This food may reduce <strong>${Math.abs(lifespanImpact)} minutes</strong> from your life.`;
+          }
+
+          showResult(`
+            <h2>🍽️ ${capitalize(foodName)}</h2>
+            <p>${message}</p>
+          `);
+        } else {
+          showResult("⚠️ No nutrition data found.");
+        }
+      };
+      reader.readAsDataURL(file);
+    }
+
+    async function detectFoodWithClarifai(base64Image) {
+      const url = "https://api.clarifai.com/v2/models/food-item-recognition/versions/1d2f4f60b2ff40f8b4b67fc88df2ddee/outputs ";
+
+      const response = await fetch(url, {
+        method: "POST",
+        headers: {
+          "Authorization": `Key ${CLARIFAI_API_KEY}`,
+          "Content-Type": "application/json"
+        },
+        body: JSON.stringify({
+          inputs: [{
+            data: {
+              image: {
+                base64: base64Image
+              }
+            }
+          }]
+        })
+      });
+
+      const data = await response.json();
+      const concepts = data.outputs?.[0]?.data?.concepts || [];
+
+      if (concepts.length > 0) {
+        return concepts[0].name.toLowerCase();
+      }
+      return null;
+    }
+
+    async function getNutritionFromUSDA(foodName) {
+      const url = `https://api.nal.usda.gov/fdc/v1/foods/search?query= ${encodeURIComponent(foodName)}&pageSize=1&api_key=${USDA_API_KEY}`;
+
+      const res = await fetch(url);
+      const data = await res.json();
+
+      if (data.foods && data.foods.length > 0) {
+        const nutrients = data.foods[0].foodNutrients;
+
+        const calories = nutrients.find(n => n.nutrientId === 1008)?.value || 0;
+        const protein = nutrients.find(n => n.nutrientId === 1003)?.value || 0;
+        const fat = nutrients.find(n => n.nutrientId === 1004)?.value || 0;
+        const carbs = nutrients.find(n => n.nutrientId === 1005)?.value || 0;
+        const sugar = nutrients.find(n => n.nutrientName === "Sugars, total including NME")?.value || 0;
+
+        // Lifespan formula (adjustable)
+        const lifespanImpact = Math.round(
+          (calories * 0.1) -
+          (fat * 0.5 * 60) -
+          (sugar * 0.2 * 60) +
+          (protein * 0.3 * 60)
+        );
+
+        return {
+          lifespanImpact
+        };
+      }
+      return null;
+    }
+
+    function showResult(html) {
+      document.getElementById("result").innerHTML = html;
+    }
+
+    function capitalize(str) {
+      return str.charAt(0).toUpperCase() + str.slice(1);
+    }
+  </script>
 </body>
 </html>
